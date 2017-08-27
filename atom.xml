@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>LANCE GIN</title>
+  <subtitle>GYM CODER</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://lancegin.cc/"/>
+  <updated>2017-08-27T13:04:36.000Z</updated>
+  <id>http://lancegin.cc/</id>
+  
+  <author>
+    <name>Lance Gin</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>npm version manager</title>
+    <link href="http://lancegin.cc/tech/npm-version-manager/"/>
+    <id>http://lancegin.cc/tech/npm-version-manager/</id>
+    <published>2016-11-07T08:27:31.000Z</published>
+    <updated>2017-08-27T13:04:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Haven’t writen node for a long time, the version on my mac is still 5.x, today I find a easy way to update node to the latest version.</p>
+<p><code>node</code> has a self module called <code>n</code>, it is really called <code>n</code> 2333…You can easily install it to the globle environment by :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g n</div></pre></td></tr></table></figure>
+<p><code>n</code> for node is just like <code>rvm</code> for ruby, it can manage the version of node conveniently, so you can update node to the latest stable version by :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">n stable</div></pre></td></tr></table></figure>
+<p>then it will be successful.</p>
+<p>But it is not the end, after you update node to the latest version, the <code>npm</code> will have an error <code>Error: Cannot find module &#39;internal/fs&#39;</code>, that’s because the version of npm hasn’t been the newest, so the direct way to fix it is UPDATING npm by <code>npm -g install npm@next</code>, but it will still render a same error. Now you should change the node version to <code>6.x</code> by:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">n [ version ]</div></pre></td></tr></table></figure>
+<p>then you can update the npm by:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm -g install npm@next</div></pre></td></tr></table></figure>
+<p>now you can change the node version to the latest stable. </p>
+<p>and it will be fine.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Haven’t writen node for a long time, the version on my mac is still 5.x, today I find a easy way to update node to the latest version.&lt;/p
+    
+    </summary>
+    
+      <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="node" scheme="http://lancegin.cc/tags/node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Install Package Control in ST3</title>
+    <link href="http://lancegin.cc/tech/Install-Package-Control-in-ST3/"/>
+    <id>http://lancegin.cc/tech/Install-Package-Control-in-ST3/</id>
+    <published>2015-11-01T08:27:31.000Z</published>
+    <updated>2017-08-27T05:42:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>ST (Sublime Text) is a very sexy IDE for me while coding, but if you update it to ST3, you will found that some packages could not be installed. It is just because sublime has update Python to the latest version, so we should reinstall the Package Control Tool.</p>
+<p>• first you can tap <code>ctrl + ~</code> to open the console window and copy the python codes below to it, then tap <code>Enter</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib.request</div><div class="line"><span class="keyword">import</span> os</div><div class="line">pf = <span class="string">'Package Control.sublime-package'</span></div><div class="line">ipp = sublime.installed_packages_path()</div><div class="line">urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) )</div><div class="line">open(os.path.join(ipp, pf), <span class="string">'wb'</span>).write(urllib.request.urlopen( <span class="string">'http://sublime.wbond.net/'</span> + pf.replace(<span class="string">' '</span>,<span class="string">'%20'</span>)).read())</div></pre></td></tr></table></figure>
+<p>• the console window will show a note such as “a missing dependency was just installed” if successfull.</p>
+<p><img src="http://outub9z8v.bkt.clouddn.com/package_control_01.jpg" alt=""></p>
+<p>• now you can install the packages you want by tapping <code>Command + Shift + P</code> then input <code>install</code>.</p>
+<p><img src="http://outub9z8v.bkt.clouddn.com/package_control_02.jpg" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;ST (Sublime Text) is a very sexy IDE for me while coding, but if you update it to ST3, you will found that some packages could not be ins
+    
+    </summary>
+    
+      <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="sublime" scheme="http://lancegin.cc/tags/sublime/"/>
+    
+      <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Use Manifest to Add Resources to Local Cache</title>
+    <link href="http://lancegin.cc/tech/Use-Manifest-to-Add-Resources-to-Local-Cache/"/>
+    <id>http://lancegin.cc/tech/Use-Manifest-to-Add-Resources-to-Local-Cache/</id>
+    <published>2015-10-27T09:27:31.000Z</published>
+    <updated>2017-08-27T05:14:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>When we develop the HTML5 web app, we can use manifest file to reduce the loading time of some resources. It’s a test project about <code>manifest</code> below to show the effect.</p>
+<p>• when the website load at the first time, we’ll see all the resources were loaded from network.</p>
+<p><img src="http://outub9z8v.bkt.clouddn.com/manifest_01.jpg" alt=""></p>
+<p>• if we click to another page and go back to this page, all the resouces we need will be loaded from cache.</p>
+<p><img src="http://outub9z8v.bkt.clouddn.com/manifest_02.jpg" alt=""></p>
+<p>• but if we refresh the current page, all the resouces will be loaded from network again, it will waste much time if th resouces are large.</p>
+<p><img src="http://outub9z8v.bkt.clouddn.com/manifest_03.jpg" alt=""></p>
+<p>If we use manifest file, we can easily solve this problem.</p>
+<p>• at first link your mnifest file at the head of your <code>html file</code></p>
+<p><img src="http://outub9z8v.bkt.clouddn.com/manifest_04.jpg" alt=""></p>
+<p>• then config your manifest file to choose the resources you want to be loaded from cache</p>
+<p><img src="http://outub9z8v.bkt.clouddn.com/manifest_05.jpg" alt=""></p>
+<ol>
+<li>CACHE MANIFEST` is necessary</li>
+<li>the file under <code>CACHE</code> will be loaded from cache.</li>
+<li>the file under <code>NETWORK</code> will be loaded from network.</li>
+<li>if the resource could not be found, <code>404.html</code> will be loaded.</li>
+</ol>
+<p>• then you can refresh your website, you’ll found the resources you want to be loaded from cache were loaded from cache.</p>
+<p><img src="http://outub9z8v.bkt.clouddn.com/manifest_06.jpg" alt=""></p>
+<p>Your website will be refreshed in a high speed in this way.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;When we develop the HTML5 web app, we can use manifest file to reduce the loading time of some resources. It’s a test project about &lt;code
+    
+    </summary>
+    
+      <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="html5" scheme="http://lancegin.cc/tags/html5/"/>
+    
+      <category term="manifest" scheme="http://lancegin.cc/tags/manifest/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>A Special Easter Egg of Mac OS X</title>
+    <link href="http://lancegin.cc/tech/A-Special-Easter-Egg-of-Mac-Os-X/"/>
+    <id>http://lancegin.cc/tech/A-Special-Easter-Egg-of-Mac-Os-X/</id>
+    <published>2015-10-22T08:27:31.000Z</published>
+    <updated>2017-08-27T05:13:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>hold <code>shift</code> and minimize your window, the window will be minimized slowly.</p>
+<p>XXXD</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;hold &lt;code&gt;shift&lt;/code&gt; and minimize your window, the window will be minimized slowly.&lt;/p&gt;
+&lt;p&gt;XXXD&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
+    
+    
+      <category term="sys" scheme="http://lancegin.cc/tags/sys/"/>
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Fail to Get the Access while Using 2FA in Github</title>
+    <link href="http://lancegin.cc/tech/fail-to-get-the-access-while-using-2FA-in-Github/"/>
+    <id>http://lancegin.cc/tech/fail-to-get-the-access-while-using-2FA-in-Github/</id>
+    <published>2015-09-13T03:55:31.000Z</published>
+    <updated>2017-08-27T05:13:39.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Nowadays, Github set a 2-factor authentication, that means if you want to login or push some codes to your repo by HTTPS, you should input 2 keys to authenticate yourself.</p>
+<p>But the version of Git has not caught the step of Github, if you push codes to your repo in terminal by Git, it will never let you go.</p>
+<p><img src="http://outub9z8v.bkt.clouddn.com/2fa_01.png" alt=""></p>
+<p>The problem bordered me harder, and today I found a way to solve it. We can use an access token to ignore the 2FA.</p>
+<p>• first you can go to the setting page to find the button to generate an access token</p>
+<p><img src="http://outub9z8v.bkt.clouddn.com/2fa_02.png" alt=""></p>
+<p>• then make sure the <code>repo:status</code> has been checked</p>
+<p><img src="http://outub9z8v.bkt.clouddn.com/2fa_03.png" alt=""></p>
+<p>• now you will see your new access token that will be used to ignore the 2FA.</p>
+<p>• from then on, while you want to push or pull codes from your repo, you should tap <code>git config --global credential.helper store</code> first, then tap your username and your new access token.</p>
+<p>Then the 2FA problem will not border you anymore. And, your Github will be safer.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Nowadays, Github set a 2-factor authentication, that means if you want to login or push some codes to your repo by HTTPS, you should inpu
+    
+    </summary>
+    
+      <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="2FA" scheme="http://lancegin.cc/tags/2FA/"/>
+    
+      <category term="github" scheme="http://lancegin.cc/tags/github/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>My Vim Setting</title>
+    <link href="http://lancegin.cc/tech/My-Vim-Setting/"/>
+    <id>http://lancegin.cc/tech/My-Vim-Setting/</id>
+    <published>2015-09-02T08:37:31.000Z</published>
+    <updated>2017-08-27T05:13:11.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>vim setting for myself.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line">"""""""""""""""""""""""""""""</div><div class="line">" 个人用vim配置 by lancegin "</div><div class="line">"""""""""""""""""""""""""""""</div><div class="line"></div><div class="line">" 打开文件类型自动检测功能</div><div class="line">filetype on</div><div class="line"></div><div class="line">" 设置语法高亮</div><div class="line">syntax enable</div><div class="line">syntax on</div><div class="line"></div><div class="line">" 设置语言编码并且解决菜单乱码问题</div><div class="line">set encoding=utf-8 </div><div class="line"></div><div class="line">" fileencodings需要注意顺序，前面的字符集应该比后面的字符集大 </div><div class="line">set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1 </div><div class="line">set langmenu=zh_CN.utf-8 </div><div class="line">set imcmdline </div><div class="line">source $VIMRUNTIME/delmenu.vim </div><div class="line">source $VIMRUNTIME/menu.vim </div><div class="line"></div><div class="line">" 高亮显示匹配的括号</div><div class="line">set showmatch</div><div class="line"></div><div class="line">" 设置默认shell (本机已经安装zsh)</div><div class="line">set shell=zsh</div><div class="line"></div><div class="line">" 显示行数</div><div class="line">set number</div><div class="line"></div><div class="line">" 解决console输出乱码</div><div class="line">language messages zh_CN.utf-8</div><div class="line"></div><div class="line">" 自动缩进</div><div class="line">set autoindent</div><div class="line"></div><div class="line">" 智能对齐</div><div class="line">set smartindent</div><div class="line"></div><div class="line">" 使用鼠标功能，a表示所有情况下都使用鼠标功能</div><div class="line">set mouse=a</div><div class="line"></div><div class="line">" 设置折叠模式 </div><div class="line">set foldcolumn=4</div><div class="line"> </div><div class="line">" 光标遇到折叠，折叠就打开 </div><div class="line">set foldopen=all</div><div class="line"></div><div class="line">" 移开折叠时自动关闭折叠 </div><div class="line">set foldclose=all</div><div class="line"> </div><div class="line">" 依缩进折叠 </div><div class="line">"   manual  手工定义折叠 </div><div class="line">"   indent  更多的缩进表示更高级别的折叠 </div><div class="line">"   expr    用表达式来定义折叠 </div><div class="line">"   syntax  用语法高亮来定义折叠 </div><div class="line">"   diff    对没有更改的文本进行折叠 </div><div class="line">"   marker  对文中的标志折叠 </div><div class="line">set foldmethod=syntax</div><div class="line"> </div><div class="line">" 启动时不要自动折叠代码 </div><div class="line">set foldlevel=100</div><div class="line"> </div><div class="line">" 依标记折叠 </div><div class="line">set foldmethod=marker</div><div class="line"></div><div class="line">" 显示光标行列位置</div><div class="line">set ruler</div><div class="line"></div><div class="line">" 显示中文引号</div><div class="line">set ambiwidth=double</div><div class="line"></div><div class="line">" 高亮搜索的关键字</div><div class="line">set hlsearch</div><div class="line"></div><div class="line">" 搜索忽略大小写</div><div class="line">set ignorecase</div><div class="line"></div><div class="line">" 增强模式中的命令行自动完成操作</div><div class="line">set wildmenu</div><div class="line"></div><div class="line">" 自动加载外部修改内容</div><div class="line">set autoread</div><div class="line"></div><div class="line">" 选中一段文字并全文搜索这段文字</div><div class="line">vmap ,/ y/=escape(@", '\\/.*$^~[]') </div><div class="line">vmap ,? y?=escape(@", '\\/.*$^~[]')</div><div class="line"></div><div class="line">" 粘贴模式防止粘贴过来的程序代码不会错位</div><div class="line">set paste</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;vim setting for myself.&lt;/p&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2
+    
+    </summary>
+    
+      <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="vim" scheme="http://lancegin.cc/tags/vim/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Fail to Connect while Using Gem to Install</title>
+    <link href="http://lancegin.cc/tech/Fail-to-Connect-while-Using-Gem-to-Install/"/>
+    <id>http://lancegin.cc/tech/Fail-to-Connect-while-Using-Gem-to-Install/</id>
+    <published>2015-08-19T09:58:31.000Z</published>
+    <updated>2017-08-27T05:12:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>When I used Rubygems to install some application times ago, I usually meet the problem that says “connection error”.</p>
+<p>Today when I tapped <code>sudo gem install rails</code>, I met the problem again, just like the pic below.</p>
+<p><img src="http://outub9z8v.bkt.clouddn.com/rubygem_01.png" alt=""></p>
+<p>Now I introduce an easy way to solve this problem.</p>
+<p>• use <code>gem sources</code> to list the sources you have used. You will see the source <code>https://rubygems.org/</code></p>
+<p><img src="http://outub9z8v.bkt.clouddn.com/rubygem_02.png" alt=""></p>
+<p>• use <code>gem sources -a http://rubygems.org</code> to add the new source with “http”</p>
+<p><img src="http://outub9z8v.bkt.clouddn.com/rubygem_03.png" alt=""></p>
+<p>• use <code>gem sources -r https://rubygem.org/</code> to remove the old source with “https”</p>
+<p><img src="http://outub9z8v.bkt.clouddn.com/rubygem_04.png" alt=""></p>
+<p>• then you will not have the connection problem.</p>
+<p><img src="http://outub9z8v.bkt.clouddn.com/rubygem_05.png" alt=""></p>
+<p>• If you still have some problem when you use <code>bundle</code>, you can use <code>gem sources -a http://ruby.taobao.org</code> to add taobao ruby to your source.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;When I used Rubygems to install some application times ago, I usually meet the problem that says “connection error”.&lt;/p&gt;
+&lt;p&gt;Today when I 
+    
+    </summary>
+    
+      <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="ruby" scheme="http://lancegin.cc/tags/ruby/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>css3 to implement adding more bg pics to a same block</title>
+    <link href="http://lancegin.cc/tech/css3-to-implement-adding-more-bg-pics-to-a-same-block/"/>
+    <id>http://lancegin.cc/tech/css3-to-implement-adding-more-bg-pics-to-a-same-block/</id>
+    <published>2015-08-18T11:58:31.000Z</published>
+    <updated>2017-08-27T05:12:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>…more is coming!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;…more is coming!&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="css3" scheme="http://lancegin.cc/tags/css3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>My Sublime Settings</title>
+    <link href="http://lancegin.cc/tech/My-Sublime_Settings/"/>
+    <id>http://lancegin.cc/tech/My-Sublime_Settings/</id>
+    <published>2015-08-17T06:37:31.000Z</published>
+    <updated>2017-08-27T05:14:51.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>Some basic and useful settings while group working.<br>It is the codes below.</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * my sublime settings</div><div class="line"> * @LanceGin</div><div class="line"> **/</div><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line">    // 设置编辑器字体大小，凭个人喜好而定</div><div class="line">    "font_size": 13,</div><div class="line"></div><div class="line">    // 默认将tabs转换为空格，利于跨编辑器协同工作</div><div class="line">    "translate_tabs_to_spaces": true,</div><div class="line"></div><div class="line">    // 默认1个tab转换为4个space</div><div class="line">    "tab_size": 4,</div><div class="line"></div><div class="line">    // 显示代码前的行数</div><div class="line">    "line_numbers": true,</div><div class="line"></div><div class="line">    // 允许代码块折叠并且总是显示可折叠三角标</div><div class="line">    "fold_buttons": true,</div><div class="line">    "fade_fold_buttons": false,</div><div class="line"></div><div class="line">    // 拼写检查，可以尝试自己下载字典后改为true</div><div class="line">    "spell_check": false,</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Some basic and useful settings while group working.&lt;br&gt;It is the codes below.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;t
+    
+    </summary>
+    
+      <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="sublime" scheme="http://lancegin.cc/tags/sublime/"/>
+    
+      <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Difference between Moving a file and Copying a file</title>
+    <link href="http://lancegin.cc/tech/Difference-between-Moving-a-file-and-Copying-a-file/"/>
+    <id>http://lancegin.cc/tech/Difference-between-Moving-a-file-and-Copying-a-file/</id>
+    <published>2015-04-28T08:27:31.000Z</published>
+    <updated>2017-08-27T05:12:10.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>A very strange thing happened to me when I was coding one of my project today. When I move a new pictrue to the img directory, the website said FORBIDDEN, I have to use <code>chmod 777 &lt;filename&gt;</code>to get the permission so that the image could be shown.</p>
+<p>So I check the permission of images in my img folder, the result is like below</p>
+<p><img src="http://outub9z8v.bkt.clouddn.com/permission.png" alt=""></p>
+<p>You can see that some images belong to root, and others belong to lancegin. After thinking and finding some solutions, I get the differences between moving a file ang copying a file.<br>More is coming…</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;A very strange thing happened to me when I was coding one of my project today. When I move a new pictrue to the img directory, the websit
+    
+    </summary>
+    
+      <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
+    
+    
+      <category term="sys" scheme="http://lancegin.cc/tags/sys/"/>
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Better iTerm</title>
+    <link href="http://lancegin.cc/tech/better-iTerm/"/>
+    <id>http://lancegin.cc/tech/better-iTerm/</id>
+    <published>2015-04-25T08:27:00.000Z</published>
+    <updated>2017-08-27T05:13:17.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Useful-Guide-about-Iterm-and-Zsh"><a href="#Useful-Guide-about-Iterm-and-Zsh" class="headerlink" title="Useful Guide about Iterm and Zsh"></a>Useful Guide about Iterm and Zsh</h1><blockquote>
+<p>in this article, I will set an very easy Iterm, the plugins I will use are very covenient for us to use the Iterm, Vim ,and Terminal.</p>
+</blockquote>
+<h3 id="Dowload-Iterm"><a href="#Dowload-Iterm" class="headerlink" title="Dowload Iterm"></a>Dowload Iterm</h3><p>click <a href="http://iterm2.com/downloads.html" target="_blank" rel="external">iterm2.com</a> to download the latest version.</p>
+<h3 id="Install-Zsh"><a href="#Install-Zsh" class="headerlink" title="Install Zsh"></a>Install Zsh</h3><h4 id="1-via-curl"><a href="#1-via-curl" class="headerlink" title="1. via curl"></a>1. via curl</h4><p><code>curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh</code></p>
+<h4 id="2-via-wget"><a href="#2-via-wget" class="headerlink" title="2. via wget"></a>2. via wget</h4><p><code>wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh</code></p>
+<h4 id="3-manual-installation"><a href="#3-manual-installation" class="headerlink" title="3. manual installation"></a>3. manual installation</h4><p>. clone the repository:</p>
+<p><code>git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</code></p>
+<p>. backup your ~./zshrc file</p>
+<p><code>cp ~/.zshrc ~/.zshrc.orig</code></p>
+<p>. creat your new configuration file</p>
+<p><code>cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</code></p>
+<p>. change your default shell</p>
+<p><code>chsh -s /bin/zsh</code></p>
+<blockquote>
+<p>now you have finish installing your new toys–iTerm2 and oh-my-zsh. You can just have a try.</p>
+</blockquote>
+<h3 id="Font-Setting"><a href="#Font-Setting" class="headerlink" title="Font Setting"></a>Font Setting</h3><ol>
+<li>open your iTerm2, and open the <code>Profiles</code> or press <code>command + O</code></li>
+<li>select your loving font.</li>
+</ol>
+<h3 id="Blendent"><a href="#Blendent" class="headerlink" title="Blendent"></a>Blendent</h3><p>if you use iTerm2 on Mac, you will find that the default blendent is very ugly. I can’t stand it.</p>
+<p>so taday I will recommend a very beautiful color blendent <code>Solarized</code></p>
+<p>like this shot below</p>
+<p><img src="http://outub9z8v.bkt.clouddn.com/1.png" alt=""></p>
+<ol>
+<li>download Salarized</li>
+</ol>
+<p><code>git clone git://github.com/altercation/solarized.git</code></p>
+<ol>
+<li>add the color blendent to your iterm2</li>
+</ol>
+<p>open the folder you downloaded just now, then select the folder <code>iTerm2-colors-solarized</code>, double click the <code>.itermcolor</code> file, now you can open your <code>Profiles</code> to select your new blendent.</p>
+<p>  now, I found another beautiful blendent named “tomorrow”,you can download it via <code>git clone git:github.com/chriskempson/tomorrow-theme</code>, then goto step 2 above.</p>
+<h3 id="Theme"><a href="#Theme" class="headerlink" title="Theme"></a>Theme</h3><p>. <code>oh-my-zsh</code> has provided many kinds of <a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes" target="_blank" rel="external">Themes</a>, choose the best one you like.</p>
+<p>. open your <code>.zshrc</code> file</p>
+<p><code>vi ~/.zshrc</code></p>
+<p>. find <code>ZSH_THEME=&quot;agnoster&quot;</code>, and change the theme name.</p>
+<p>. reopen iTerm2.</p>
+<h3 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h3><p>. <a href="https://github.com/joelthelion/autojump" target="_blank" rel="external">autojump</a> is a very nice plugin.</p>
+<h3 id="More-is-Coming…"><a href="#More-is-Coming…" class="headerlink" title="More is Coming…"></a>More is Coming…</h3><blockquote>
+<p>If you have any suggestions, you can push them to me, I will read them carefully!</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Useful-Guide-about-Iterm-and-Zsh&quot;&gt;&lt;a href=&quot;#Useful-Guide-about-Iterm-and-Zsh&quot; class=&quot;headerlink&quot; title=&quot;Useful Guide about Iterm and
+    
+    </summary>
+    
+      <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
+    
+  </entry>
+  
+</feed>

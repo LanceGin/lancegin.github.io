@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  *
  * @package Maupassant
@@ -18,7 +19,7 @@ html, button, input, select, textarea,
   font-family: "PingFangSC-Regular", Helvetica, "Helvetica Neue", "Segoe UI", "Hiragino Sans GB", "Source Han Sans CN", "Microsoft YaHei", "STHeiti", "WenQuanYi Micro Hei", sans-serif !important; }
 
 body {
-  background-color: #FFF;
+  background: url(http://outub9z8v.bkt.clouddn.com/blog-bg.png);
   color: #444;
   font-family: "TIBch", "Classic Grotesque W01", "Helvetica Neue", Arial, "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -64,7 +65,7 @@ div {
     height: 0;
     overflow: hidden; }
   #header .site-name #logo {
-    font: bold 28px/1.12 "Times New Roman", Georgia, Times, sans-serif;
+    font: bold 28px/1.12 Calibri, Candara, Segoe, “Segoe UI”, Optima, Arial;
     color: #555;
     margin: 0 10px 0 0; }
     #header .site-name #logo span, #header .site-name #logo:hover {
@@ -157,7 +158,7 @@ div {
     #sidebar .widget:hover {
       border: 1px solid #eee;
       background: #fff;
-      box-shadow: 0 0 1px #eee; }
+      box-shadow: 0 0 8px #888; }
 
 /* title for search result or tagged posts*/
 .label-title {
@@ -298,7 +299,7 @@ div {
   .post:hover {
     border: 1px solid #eee;
     background: #fff;
-    box-shadow: 0 0 1px #eee; }
+    box-shadow: 0 0 8px #888; }
 
 .page-navigator {
   border-top: 1px solid #ddd;

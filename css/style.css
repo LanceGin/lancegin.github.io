@@ -25,6 +25,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 14px; }
+  body p::selection, body a::selection, body span::selection, body i::selection, body div::selection, body code::selection, body input::selection,
+  body h1::selection, body h2::selection, body h3::selection, body h4::selection, body h5::selection, body h6::selection, body li::selection, body img::selection {
+    background: #888;
+    color: #fff; }
+  body p::-moz-selection, body a::-moz-selection, body span::-moz-selection, body i::-moz-selection, body div::-moz-selection, body code::-moz-selection, body input::-moz-selection,
+  body h1::-moz-selection, body h2::-moz-selection, body h3::-moz-selection, body h4::-moz-selection, body h5::-moz-selection, body h6::-moz-selection, body li::-moz-selection, body img::-moz-selection {
+    background: #888;
+    color: #fff; }
 
 .body_container {
   padding: 0 60px;

@@ -73,6 +73,40 @@
   </entry>
   
   <entry>
+    <title>Manually create icns files with 1024* png</title>
+    <link href="http://lancegin.cc/tech/manually-create-icns-file/"/>
+    <id>http://lancegin.cc/tech/manually-create-icns-file/</id>
+    <published>2016-11-25T08:27:00.000Z</published>
+    <updated>2017-08-28T03:49:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>When you upload your app to MAS(Mac App Store) at the first time, maybe you will get this error:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">the application bundle does not contain an icon in ICNS format, containing both a 512x512 and a 512x512@2x image.</div></pre></td></tr></table></figure>
+<p>The error will occured if the icns fotmat is incorrect, so we need to solve this problem by creating the standard icns file.</p>
+<p>Here is a script to convert a 1024 x 1024 png to the required icns file.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">mkdir MyIcon.iconset</div><div class="line">sips -z 16 16     Icon1024.png --out MyIcon.iconset/icon_16x16.png</div><div class="line">sips -z 32 32     Icon1024.png --out MyIcon.iconset/icon_16x16@2x.png</div><div class="line">sips -z 32 32     Icon1024.png --out MyIcon.iconset/icon_32x32.png</div><div class="line">sips -z 64 64     Icon1024.png --out MyIcon.iconset/icon_32x32@2x.png</div><div class="line">sips -z 128 128   Icon1024.png --out MyIcon.iconset/icon_128x128.png</div><div class="line">sips -z 256 256   Icon1024.png --out MyIcon.iconset/icon_128x128@2x.png</div><div class="line">sips -z 256 256   Icon1024.png --out MyIcon.iconset/icon_256x256.png</div><div class="line">sips -z 512 512   Icon1024.png --out MyIcon.iconset/icon_256x256@2x.png</div><div class="line">sips -z 512 512   Icon1024.png --out MyIcon.iconset/icon_512x512.png</div><div class="line">cp Icon1024.png MyIcon.iconset/icon_512x512@2x.png</div><div class="line">iconutil -c icns MyIcon.iconset</div><div class="line">rm -R MyIcon.iconset</div></pre></td></tr></table></figure>
+<p>You can name your 1024 png file to <code>Icon1025.png</code>, and copy the code above to the terminal, it will create the icns file you need.</p>
+<p>Or you can save the code to a file with the name of <code>YOUWANT</code>, and put the <code>Icon1024.png</code> to the same folder, then you can use <code>source YOUWANT</code> to call it.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;When you upload your app to MAS(Mac App Store) at the first time, maybe you will get this error:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;tab
+    
+    </summary>
+    
+      <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
+    
+      <category term="iDev" scheme="http://lancegin.cc/tags/iDev/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Easy to manage the version of npm</title>
     <link href="http://lancegin.cc/tech/npm-version-manager/"/>
     <id>http://lancegin.cc/tech/npm-version-manager/</id>

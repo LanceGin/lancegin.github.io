@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lancegin.cc/"/>
-  <updated>2017-08-27T13:32:26.000Z</updated>
+  <updated>2017-08-30T04:54:40.000Z</updated>
   <id>http://lancegin.cc/</id>
   
   <author>
@@ -14,6 +14,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to upload your electron app to MAS</title>
+    <link href="http://lancegin.cc/tech/how-to-upload-electron-app-to-mas/"/>
+    <id>http://lancegin.cc/tech/how-to-upload-electron-app-to-mas/</id>
+    <published>2017-08-29T03:27:00.000Z</published>
+    <updated>2017-08-30T04:54:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Before you read this article, make sure that you know how to build your electron app to a mas version with <a href="https://github.com/electron-userland/electron-builder" target="_blank" rel="external">electron-builder</a>.</p>
+<p>You can look through the wiki of <code>electron-builder</code>, and that will help you to build your mas version.</p>
+<p>But when you get your mas version, you can try to double-click the app, it will always be crashed, now you can follow the steps below to fix it.</p>
+<ul>
+<li><p>Check your <code>/build/mas/YOURAPP/contents</code>, an <code>embedded.provisionprofile</code> should be existed, if not, you can download the file in <a href="https://developer.apple.com/" target="_blank" rel="external">Apple Developer</a>.</p>
+</li>
+<li><p>After you adding the file to the specific path, add 3 files below to <code>/build/mas/</code>.</p>
+</li>
+</ul>
+<p>1.sign.sh</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>!/bin/bash</div><div class="line">	</div><div class="line"><span class="meta">#</span> Name of your app.</div><div class="line">APP="YOURAPP"</div><div class="line"><span class="meta">#</span> The path of your app to sign.</div><div class="line">APP_PATH="./YOURAPP.app"</div><div class="line"><span class="meta">#</span> The path to the location you want to put the signed package.</div><div class="line">RESULT_PATH="./$APP.pkg"</div><div class="line"><span class="meta">#</span> The name of certificates you requested.</div><div class="line">APP_KEY="3rd Party Mac Developer Application: xxxxxxxxx (xxxxxxxxxx)"</div><div class="line">INSTALLER_KEY="3rd Party Mac Developer Installer: xxxxxxxxxxx (xxxxxxxx)"</div><div class="line"><span class="meta">#</span> The path of your plist files.</div><div class="line">CHILD_PLIST="./child.plist"</div><div class="line">PARENT_PLIST="./parent.plist"</div><div class="line">	</div><div class="line">FRAMEWORKS_PATH="$APP_PATH/Contents/Frameworks"</div><div class="line">	</div><div class="line">codesign -s "$APP_KEY" -f --entitlements "$CHILD_PLIST" "$FRAMEWORKS_PATH/Electron Framework.framework/Versions/A/Electron Framework"</div><div class="line">codesign -s "$APP_KEY" -f --entitlements "$CHILD_PLIST" "$FRAMEWORKS_PATH/Electron Framework.framework/Versions/A/Libraries/libffmpeg.dylib"</div><div class="line">codesign -s "$APP_KEY" -f --entitlements "$CHILD_PLIST" "$FRAMEWORKS_PATH/Electron Framework.framework/Versions/A/Libraries/libnode.dylib"</div><div class="line">codesign -s "$APP_KEY" -f --entitlements "$CHILD_PLIST" "$FRAMEWORKS_PATH/Electron Framework.framework"</div><div class="line">codesign -s "$APP_KEY" -f --entitlements "$CHILD_PLIST" "$FRAMEWORKS_PATH/$APP Helper.app/Contents/MacOS/$APP Helper"</div><div class="line">codesign -s "$APP_KEY" -f --entitlements "$CHILD_PLIST" "$FRAMEWORKS_PATH/$APP Helper.app/"</div><div class="line">codesign -s "$APP_KEY" -f --entitlements "$CHILD_PLIST" "$FRAMEWORKS_PATH/$APP Helper EH.app/Contents/MacOS/$APP Helper EH"</div><div class="line">codesign -s "$APP_KEY" -f --entitlements "$CHILD_PLIST" "$FRAMEWORKS_PATH/$APP Helper EH.app/"</div><div class="line">codesign -s "$APP_KEY" -f --entitlements "$CHILD_PLIST" "$FRAMEWORKS_PATH/$APP Helper NP.app/Contents/MacOS/$APP Helper NP"</div><div class="line">codesign -s "$APP_KEY" -f --entitlements "$CHILD_PLIST" "$FRAMEWORKS_PATH/$APP Helper NP.app/"</div><div class="line">codesign -s "$APP_KEY" -f --entitlements "$CHILD_PLIST" "$APP_PATH/Contents/MacOS/$APP"</div><div class="line">codesign -s "$APP_KEY" -f --entitlements "$PARENT_PLIST" "$APP_PATH"</div><div class="line">	</div><div class="line">productbuild --component "$APP_PATH" /Applications --sign "$INSTALLER_KEY" "$RESULT_PATH"</div></pre></td></tr></table></figure>
+<p>2.child.plist</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">"1.0"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">dict</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>com.apple.security.app-sandbox<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>com.apple.security.inherit<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>3.parent.plist</p>
+<blockquote>
+<p>this plist file will base on your app’s feature, you can find the security setting list in Apple Developer Center</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</div><div class="line">&lt;plist version=&quot;1.0&quot;&gt;</div><div class="line">  &lt;dict&gt;</div><div class="line">    &lt;key&gt;com.apple.security.app-sandbox&lt;/key&gt;</div><div class="line">    &lt;true/&gt;</div><div class="line">    &lt;key&gt;com.apple.security.network.client&lt;/key&gt;</div><div class="line">    &lt;true/&gt;</div><div class="line">    &lt;key&gt;com.apple.security.files.downloads.read-write&lt;/key&gt;</div><div class="line">    &lt;true/&gt;</div><div class="line">    &lt;key&gt;com.apple.security.files.user-selected.read-write&lt;/key&gt;</div><div class="line">    &lt;true/&gt;</div><div class="line">    &lt;key&gt;com.apple.security.application-groups&lt;/key&gt;</div><div class="line">    &lt;string&gt;xxxxxxx.com.xxxxxxxxxx&lt;/string&gt;</div><div class="line">  &lt;/dict&gt;</div><div class="line">&lt;/plist&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>Now you can use <code>source sign.sh</code> to package your mas version to pkg file, and the pkg file will be uploaded to MAS successfully</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Before you read this article, make sure that you know how to build your electron app to a mas version with &lt;a href=&quot;https://github.com/el
+    
+    </summary>
+    
+      <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
+    
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="electron" scheme="http://lancegin.cc/tags/electron/"/>
+    
+      <category term="iDev" scheme="http://lancegin.cc/tags/iDev/"/>
+    
+  </entry>
   
   <entry>
     <title>A python module about palette grabbing</title>
@@ -98,9 +145,9 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
-      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
-    
       <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
     
       <category term="iDev" scheme="http://lancegin.cc/tags/iDev/"/>
     
@@ -167,11 +214,11 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
-      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
-    
       <category term="sublime" scheme="http://lancegin.cc/tags/sublime/"/>
     
       <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
     
   </entry>
   
@@ -244,9 +291,9 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
-      <category term="sys" scheme="http://lancegin.cc/tags/sys/"/>
-    
       <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="sys" scheme="http://lancegin.cc/tags/sys/"/>
     
   </entry>
   
@@ -402,11 +449,11 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
-      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
-    
       <category term="sublime" scheme="http://lancegin.cc/tags/sublime/"/>
     
       <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
     
   </entry>
   
@@ -432,9 +479,9 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
-      <category term="sys" scheme="http://lancegin.cc/tags/sys/"/>
-    
       <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="sys" scheme="http://lancegin.cc/tags/sys/"/>
     
   </entry>
   
@@ -499,9 +546,9 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
-      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
-    
       <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
     
   </entry>
   

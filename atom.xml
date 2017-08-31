@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lancegin.cc/"/>
-  <updated>2017-08-30T04:54:40.000Z</updated>
+  <updated>2017-08-31T01:14:02.000Z</updated>
   <id>http://lancegin.cc/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://lancegin.cc/tech/how-to-upload-electron-app-to-mas/"/>
     <id>http://lancegin.cc/tech/how-to-upload-electron-app-to-mas/</id>
     <published>2017-08-29T03:27:00.000Z</published>
-    <updated>2017-08-30T04:54:40.000Z</updated>
+    <updated>2017-08-31T01:14:02.000Z</updated>
     
     <content type="html"><![CDATA[<p>Before you read this article, make sure that you know how to build your electron app to a mas version with <a href="https://github.com/electron-userland/electron-builder" target="_blank" rel="external">electron-builder</a>.</p>
 <p>You can look through the wiki of <code>electron-builder</code>, and that will help you to build your mas version.</p>
@@ -39,7 +39,7 @@
 <blockquote>
 <p>this plist file will base on your app’s feature, you can find the security setting list in Apple Developer Center</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</div><div class="line">&lt;plist version=&quot;1.0&quot;&gt;</div><div class="line">  &lt;dict&gt;</div><div class="line">    &lt;key&gt;com.apple.security.app-sandbox&lt;/key&gt;</div><div class="line">    &lt;true/&gt;</div><div class="line">    &lt;key&gt;com.apple.security.network.client&lt;/key&gt;</div><div class="line">    &lt;true/&gt;</div><div class="line">    &lt;key&gt;com.apple.security.files.downloads.read-write&lt;/key&gt;</div><div class="line">    &lt;true/&gt;</div><div class="line">    &lt;key&gt;com.apple.security.files.user-selected.read-write&lt;/key&gt;</div><div class="line">    &lt;true/&gt;</div><div class="line">    &lt;key&gt;com.apple.security.application-groups&lt;/key&gt;</div><div class="line">    &lt;string&gt;xxxxxxx.com.xxxxxxxxxx&lt;/string&gt;</div><div class="line">  &lt;/dict&gt;</div><div class="line">&lt;/plist&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">"1.0"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">dict</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>com.apple.security.app-sandbox<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>com.apple.security.network.client<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>com.apple.security.files.downloads.read-write<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>com.apple.security.files.user-selected.read-write<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>com.apple.security.application-groups<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>xxxxxxx.com.xxxxxxxxxx<span class="tag">&lt;/<span class="name">string</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></div></pre></td></tr></table></figure>
 <ul>
 <li>Now you can use <code>source sign.sh</code> to package your mas version to pkg file, and the pkg file will be uploaded to MAS successfully</li>
 </ul>
@@ -145,9 +145,9 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
-      <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
-    
       <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
     
       <category term="iDev" scheme="http://lancegin.cc/tags/iDev/"/>
     
@@ -214,11 +214,11 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
       <category term="sublime" scheme="http://lancegin.cc/tags/sublime/"/>
     
       <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
-    
-      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
     
   </entry>
   
@@ -291,9 +291,9 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
-      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
-    
       <category term="sys" scheme="http://lancegin.cc/tags/sys/"/>
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
     
   </entry>
   
@@ -449,11 +449,11 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
       <category term="sublime" scheme="http://lancegin.cc/tags/sublime/"/>
     
       <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
-    
-      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
     
   </entry>
   
@@ -479,9 +479,9 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
-      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
-    
       <category term="sys" scheme="http://lancegin.cc/tags/sys/"/>
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
     
   </entry>
   
@@ -546,9 +546,9 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
-      <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
-    
       <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
     
   </entry>
   

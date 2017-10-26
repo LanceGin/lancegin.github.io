@@ -57,9 +57,9 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
-      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
-    
       <category term="github" scheme="http://lancegin.cc/tags/github/"/>
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
     
   </entry>
   
@@ -68,7 +68,7 @@
     <link href="http://lancegin.cc/tech/how-to-upload-electron-app-to-mas/"/>
     <id>http://lancegin.cc/tech/how-to-upload-electron-app-to-mas/</id>
     <published>2017-08-29T03:27:00.000Z</published>
-    <updated>2017-09-01T06:34:02.000Z</updated>
+    <updated>2017-10-26T10:07:45.000Z</updated>
     
     <content type="html"><![CDATA[<p>Before you read this article, make sure that you know how to build your electron app to a mas version with <a href="https://github.com/electron-userland/electron-builder" target="_blank" rel="external">electron-builder</a>.</p>
 <p>You can look through the wiki of <code>electron-builder</code>, and that will help you to build your mas version.</p>
@@ -80,7 +80,7 @@
 </li>
 </ul>
 <p>1.sign.sh</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">	</div><div class="line"><span class="comment"># Name of your app.</span></div><div class="line">APP=<span class="string">"YOURAPP"</span></div><div class="line"><span class="comment"># The path of your app to sign.</span></div><div class="line">APP_PATH=<span class="string">"./YOURAPP.app"</span></div><div class="line"><span class="comment"># The path to the location you want to put the signed package.</span></div><div class="line">RESULT_PATH=<span class="string">"./<span class="variable">$APP</span>.pkg"</span></div><div class="line"><span class="comment"># The name of certificates you requested.</span></div><div class="line">APP_KEY=<span class="string">"3rd Party Mac Developer Application: xxxxxxxxx (xxxxxxxxxx)"</span></div><div class="line">INSTALLER_KEY=<span class="string">"3rd Party Mac Developer Installer: xxxxxxxxxxx (xxxxxxxx)"</span></div><div class="line"><span class="comment"># The path of your plist files.</span></div><div class="line">CHILD_PLIST=<span class="string">"./child.plist"</span></div><div class="line">PARENT_PLIST=<span class="string">"./parent.plist"</span></div><div class="line">	</div><div class="line">FRAMEWORKS_PATH=<span class="string">"<span class="variable">$APP_PATH</span>/Contents/Frameworks"</span></div><div class="line">	</div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/Electron Framework.framework/Versions/A/Electron Framework"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/Electron Framework.framework/Versions/A/Libraries/libffmpeg.dylib"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/Electron Framework.framework/Versions/A/Libraries/libnode.dylib"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/Electron Framework.framework"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/<span class="variable">$APP</span> Helper.app/Contents/MacOS/<span class="variable">$APP</span> Helper"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/<span class="variable">$APP</span> Helper.app/"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/<span class="variable">$APP</span> Helper EH.app/Contents/MacOS/<span class="variable">$APP</span> Helper EH"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/<span class="variable">$APP</span> Helper EH.app/"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/<span class="variable">$APP</span> Helper NP.app/Contents/MacOS/<span class="variable">$APP</span> Helper NP"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/<span class="variable">$APP</span> Helper NP.app/"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$APP_PATH</span>/Contents/MacOS/<span class="variable">$APP</span>"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$PARENT_PLIST</span>"</span> <span class="string">"<span class="variable">$APP_PATH</span>"</span></div><div class="line">	</div><div class="line">productbuild --component <span class="string">"<span class="variable">$APP_PATH</span>"</span> /Applications --sign <span class="string">"<span class="variable">$INSTALLER_KEY</span>"</span> <span class="string">"<span class="variable">$RESULT_PATH</span>"</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">	</div><div class="line"><span class="comment"># Name of your app.</span></div><div class="line">APP=<span class="string">"YOURAPP"</span></div><div class="line"><span class="comment"># The path of your app to sign.</span></div><div class="line">APP_PATH=<span class="string">"./<span class="variable">$APP</span>.app"</span></div><div class="line"><span class="comment"># The path to the location you want to put the signed package.</span></div><div class="line">RESULT_PATH=<span class="string">"./<span class="variable">$APP</span>.pkg"</span></div><div class="line"><span class="comment"># The name of certificates you requested.</span></div><div class="line">APP_KEY=<span class="string">"3rd Party Mac Developer Application: xxxxxxxxx (xxxxxxxxxx)"</span></div><div class="line">INSTALLER_KEY=<span class="string">"3rd Party Mac Developer Installer: xxxxxxxxxxx (xxxxxxxx)"</span></div><div class="line"><span class="comment"># The path of your plist files.</span></div><div class="line">CHILD_PLIST=<span class="string">"./child.plist"</span></div><div class="line">PARENT_PLIST=<span class="string">"./parent.plist"</span></div><div class="line">	</div><div class="line">FRAMEWORKS_PATH=<span class="string">"<span class="variable">$APP_PATH</span>/Contents/Frameworks"</span></div><div class="line">	</div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/Electron Framework.framework/Versions/A/Electron Framework"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/Electron Framework.framework/Versions/A/Libraries/libffmpeg.dylib"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/Electron Framework.framework/Versions/A/Libraries/libnode.dylib"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/Electron Framework.framework"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/<span class="variable">$APP</span> Helper.app/Contents/MacOS/<span class="variable">$APP</span> Helper"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/<span class="variable">$APP</span> Helper.app/"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/<span class="variable">$APP</span> Helper EH.app/Contents/MacOS/<span class="variable">$APP</span> Helper EH"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/<span class="variable">$APP</span> Helper EH.app/"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/<span class="variable">$APP</span> Helper NP.app/Contents/MacOS/<span class="variable">$APP</span> Helper NP"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$FRAMEWORKS_PATH</span>/<span class="variable">$APP</span> Helper NP.app/"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$CHILD_PLIST</span>"</span> <span class="string">"<span class="variable">$APP_PATH</span>/Contents/MacOS/<span class="variable">$APP</span>"</span></div><div class="line">codesign -s <span class="string">"<span class="variable">$APP_KEY</span>"</span> -f --entitlements <span class="string">"<span class="variable">$PARENT_PLIST</span>"</span> <span class="string">"<span class="variable">$APP_PATH</span>"</span></div><div class="line">	</div><div class="line">productbuild --component <span class="string">"<span class="variable">$APP_PATH</span>"</span> /Applications --sign <span class="string">"<span class="variable">$INSTALLER_KEY</span>"</span> <span class="string">"<span class="variable">$RESULT_PATH</span>"</span></div></pre></td></tr></table></figure>
 <p>2.child.plist</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="meta">&lt;!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">plist</span> <span class="attr">version</span>=<span class="string">"1.0"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">dict</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>com.apple.security.app-sandbox<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>com.apple.security.inherit<span class="tag">&lt;/<span class="name">key</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">true</span>/&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">dict</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">plist</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>3.parent.plist</p>
@@ -104,9 +104,9 @@
     
       <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
     
-      <category term="iDev" scheme="http://lancegin.cc/tags/iDev/"/>
-    
       <category term="electron" scheme="http://lancegin.cc/tags/electron/"/>
+    
+      <category term="iDev" scheme="http://lancegin.cc/tags/iDev/"/>
     
   </entry>
   
@@ -193,9 +193,9 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
-      <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
-    
       <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
     
       <category term="iDev" scheme="http://lancegin.cc/tags/iDev/"/>
     
@@ -262,11 +262,11 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
       <category term="sublime" scheme="http://lancegin.cc/tags/sublime/"/>
     
       <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
-    
-      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
     
   </entry>
   
@@ -374,11 +374,11 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
+      <category term="github" scheme="http://lancegin.cc/tags/github/"/>
+    
       <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
     
       <category term="2FA" scheme="http://lancegin.cc/tags/2FA/"/>
-    
-      <category term="github" scheme="http://lancegin.cc/tags/github/"/>
     
   </entry>
   
@@ -497,11 +497,11 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
       <category term="sublime" scheme="http://lancegin.cc/tags/sublime/"/>
     
       <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
-    
-      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
     
   </entry>
   
@@ -594,9 +594,9 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
-      <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
-    
       <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="tools" scheme="http://lancegin.cc/tags/tools/"/>
     
   </entry>
   

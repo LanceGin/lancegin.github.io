@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lancegin.cc/"/>
-  <updated>2017-09-19T03:16:11.000Z</updated>
+  <updated>2017-12-25T08:13:29.000Z</updated>
   <id>http://lancegin.cc/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://lancegin.cc/tech/%E9%80%9A%E7%94%A8/"/>
+    <id>http://lancegin.cc/tech/通用/</id>
+    <published>2017-11-27T02:46:13.000Z</published>
+    <updated>2017-12-25T08:13:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>如果遇到某些业余需求（例如rundeck跨服务器脚本之类的）需要禁止掉部分用户的二步验证服务，可按照以下步骤进行：</p>
+<h4 id="一、关闭-google-authenticator-强制所有用户开启二步验证服务的配置"><a href="#一、关闭-google-authenticator-强制所有用户开启二步验证服务的配置" class="headerlink" title="一、关闭 google-authenticator 强制所有用户开启二步验证服务的配置"></a>一、关闭 google-authenticator 强制所有用户开启二步验证服务的配置</h4><p>修改文件 <code>/etc/pam.d/sshd</code>，将下面一行后面加上 <code>nullok</code> 选项</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">auth       required     pam_google_authenticator.so</div><div class="line">...</div></pre></td></tr></table></figure>
+<p>修改后的内容为：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line">auth       required     pam_google_authenticator.so nullok</div><div class="line">...</div></pre></td></tr></table></figure>
+<h4 id="二、删除指定用户目录下的-google-authenticator文件，建议删除前先备份一下"><a href="#二、删除指定用户目录下的-google-authenticator文件，建议删除前先备份一下" class="headerlink" title="二、删除指定用户目录下的.google_authenticator文件，建议删除前先备份一下"></a>二、删除指定用户目录下的<code>.google_authenticator</code>文件，建议删除前先备份一下</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /home/$USER</div><div class="line">mv .google_authenticator .google_authenticator_bak</div></pre></td></tr></table></figure>
+<p>更多详情可以参考以下文档：</p>
+<p><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-multi-factor-authentication-for-ssh-on-centos-7" target="_blank" rel="external">google二步验证文档</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;如果遇到某些业余需求（例如rundeck跨服务器脚本之类的）需要禁止掉部分用户的二步验证服务，可按照以下步骤进行：&lt;/p&gt;
+&lt;h4 id=&quot;一、关闭-google-authenticator-强制所有用户开启二步验证服务的配置&quot;&gt;&lt;a href=&quot;#一、关闭-google-
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>A strange test about GitHub</title>
@@ -57,9 +84,9 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
-      <category term="github" scheme="http://lancegin.cc/tags/github/"/>
-    
       <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="github" scheme="http://lancegin.cc/tags/github/"/>
     
   </entry>
   
@@ -374,9 +401,9 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
-      <category term="github" scheme="http://lancegin.cc/tags/github/"/>
-    
       <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
+    
+      <category term="github" scheme="http://lancegin.cc/tags/github/"/>
     
       <category term="2FA" scheme="http://lancegin.cc/tags/2FA/"/>
     
@@ -440,9 +467,9 @@
       <category term="tech" scheme="http://lancegin.cc/categories/tech/"/>
     
     
-      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
-    
       <category term="ruby" scheme="http://lancegin.cc/tags/ruby/"/>
+    
+      <category term="tech" scheme="http://lancegin.cc/tags/tech/"/>
     
   </entry>
   
